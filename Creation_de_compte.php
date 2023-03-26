@@ -117,9 +117,16 @@ if (isset($_POST['creation'])) {
   <div style="display:flex;background-color:white;">
     <div class="typeVetements">
       <ul>
-        <li><a href="">Vêtements femmes</a></li>
-        <li><a href="">Vêtements hommes</a></li>
+        <li><a href="vetements_femmes.php">Femmes</a>
+          <ul>
+            <li><a href="robe.php">Robes</a></li>
+            <li><a href="jupe.php">Jupes</a></li>
+          </ul>
+        </li>
+        <li><a href="vetements_hommes.php">Hommes</a></li>
         <li><a href="">sport</a></li>
+        <li><a href="accessoire.php">Accéssoires</a></li>
+        <li><a href="beaute.php">Beauté</a></li>
       </ul>
     </div>
 

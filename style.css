@@ -244,3 +244,18 @@ div p span{
   -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
+
+.vetement{
+  margin-top: 10px;
+}
+.haut_vers_bas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 10px;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  margin-right: 50px;
+  margin-left: 150px;
+  margin-top: 10px;
+  width: 100%;
+}
