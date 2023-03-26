@@ -30,6 +30,7 @@ header("location:Acces_au_compte.php");
             <div class="compte">
                 <ul>
                     <li><a href="Acces_au_compte.php">Se connecter</a></li>
+                    <li><a href="abonnement.php">S'abonner</a></li>
                     <li><a href="">Mon panier</a></li>
                     <li><a href="">Langue</a></li>
                 </ul>

@@ -1,55 +1,15 @@
 <?php
+/*
 session_start();
+$_SESSION = array();
+session_destroy();
+header("location:Acces_au_compte.php");
 
-
-//echo sha1('hi');
-echo $_POST['Email'] . $_POST['Password'];
-if (isset($_POST['connexion'])) {
-  echo "       isset marche!!!!!!!!!!!!!" . $_POST['connexion'] . !empty($_POST['Email'] . !empty($_POST['Password']));
-  if (!empty($_POST['Email']) and !empty($_POST['Password'])) {
-    $bdd = new PDO('mysql:host=localhost;dbname=utilisateurs;charset=utf8', 'root', '');
-    echo "empty marche!!!!!!!!!!!!!!!!!";
-    $RecupUser = $bdd->prepare('SELECT * FROM user WHERE Email=?');
-    $RecupUser->execute(array($_POST['Email']));
-    if ($RecupUser->rowCount() > 0) {
-      echo "connex";
-      /* $_SESSION['Email']=$Email;
-      $_SESSION['Password']=$Password;
-      $_SESSION['id']=$RecupUser->fetch()['id'];
-      echo"sdfghabc"; */
-      $userInfo = $RecupUser->fetch();
-      if ($userInfo['confirme'] == 1) {
-        header('Location: verif.php?id=' . $userInfo['id'] . '&cle=' . $userInfo['cle']);
-      } else {
-        echo "Vous n'êtes pas confirmé au niveau du site";
-      }
-
-
-    } else {
-      echo "L'utilisateur n'existe pas";
-
-    }
-
-
-    if (!empty($_POST['Email']) and !empty($_POST['Password']) and $RecupUser->rowCount() == 3) {
-      echo '<script>' . 'alert("mdp ou mail incorrect");' . '</script>';
-      echo "else";
-    }
-
-
-  } else {
-    echo "Veuillez mettre votre e-mail";
-
-  }
+*/
+?> 
 
 
 
-
-
-} else {
-  echo "isset marche pas";
-}
-?>
 
 
 <!DOCTYPE html>
@@ -93,12 +53,12 @@ if (isset($_POST['connexion'])) {
     <div class="divform">
       <form method='POST' action="">
 
-        <h1>Connexion</h1>
+        <h1>S'abonner</h1>
 
 
         <div class="inputs">
+          <p style="margin:auto;text-align:center;font-family:roboto;padding:15px;font-size:19px">Votre compte vous donne 10% sur tous nos produit et coûte 5$ par moi.<br><br>Vous devez avoir un compte.</p>
           <input type="email" placeholder="Email" name="Email" />
-
           <hr>
           <br>
           <input type="password" placeholder="Mot de passe" name="Password">
