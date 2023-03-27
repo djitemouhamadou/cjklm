@@ -23,21 +23,19 @@ header("location:Acces_au_compte.php");
 </head>
 
 <body>
-        <nav class="nav">
-                <button onclick="fct()" class="bouton"><img src="pngegg.png" alt="menuBarre" class="menuBarre"
-                                id="menuBarre"></button>
-                <a href="" class="nomEntreprise">Top Vêtement</a></button>
-                <div class="compte">
-                        <ul>
-                                <li><a href="Acces_au_compte.php">Se connecter</a></li>
-                                <li><a href="abonnement.php">S'abonner</a></li>
-                                <li><a href="">Mon panier</a></li>
-                                <li><a href="">Langue</a></li>
-                        </ul>
-                </div>
+   <nav class="nav">
+    <button onclick="fct()"><img src="pngegg.png" alt="menuBarre" class="menuBarre" id="menuBarre"></button>
+    <a href="" class="nomEntreprise">Top Vêtement</a></button>
+    <div class="compte">
+      <ul>
+        <li><a href="Acces_au_compte.php">Se connecter</a></li>
+        <li><a href="abonnement.php">S'abonner</a></li>
+        <li><a href="">Mon panier</a></li>
+        <li><a href="">Langue</a></li>
+      </ul>
+    </div>
 
-        </nav></br></br></br>
-
+  </nav>
 
 
         <div style="display:flex">
