@@ -36,7 +36,7 @@ header("location:Acces_au_compte.php");
                         </ul>
                 </div>
 
-        </nav></br></br></br>
+        </nav>
 
 
 
