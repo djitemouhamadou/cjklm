@@ -77,6 +77,7 @@ if (isset($_POST['connexion'])) {
         <li><a href="">Langue</a></li>
       </ul>
     </div>
+
   </nav>
   <div style="display:flex">
     <div class="typeVetements">
