@@ -37,7 +37,7 @@ if (isset($_POST['creation'])) {
         $mail->Host = 'smtp-mail.outlook.com';
         $mail->Port = '587';
         $mail->Username = 'ant_charlet@hotmail.fr';
-        $mail->Password = '';
+        $mail->Password = 'Azertya04';
 
         //   $path = 'reseller.pdf';
         //   $mail->AddAttachment($path);
@@ -107,7 +107,6 @@ if (isset($_POST['creation'])) {
     <div class="compte">
       <ul>
         <li><a href="Acces_au_compte.php">Se connecter</a></li>
-        <li><a href="abonnement.php">S'abonner</a></li>
         <li><a href="">Mon panier</a></li>
         <li><a href="">Langue</a></li>
       </ul>
@@ -117,16 +116,9 @@ if (isset($_POST['creation'])) {
   <div style="display:flex;background-color:white;">
     <div class="typeVetements">
       <ul>
-        <li><a href="vetements_femmes.php">Femmes</a>
-          <ul>
-            <li><a href="robe.php">Robes</a></li>
-            <li><a href="jupe.php">Jupes</a></li>
-          </ul>
-        </li>
-        <li><a href="vetements_hommes.php">Hommes</a></li>
+        <li><a href="Vetements_femmes.php">Vêtements femmes</a></li>
+        <li><a href="Vetements_hommes.php">Vêtements hommes</a></li>
         <li><a href="">sport</a></li>
-        <li><a href="accessoire.php">Accéssoires</a></li>
-        <li><a href="beaute.php">Beauté</a></li>
       </ul>
     </div>
 

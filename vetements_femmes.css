@@ -23,13 +23,8 @@
     min-width: 1100px;
 }
 .haut_vers_bas{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    margin-right: 50px;
-    margin-left: 150px;
+    display: block;
     width: 100%;
-
 }
 .triple div:first-child
 {
@@ -53,9 +48,4 @@
 }
 .triple div{
 
-}
-.prix{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
 }
