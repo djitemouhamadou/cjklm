@@ -69,6 +69,7 @@ if (isset($_POST['connexion'])) {
   <title>Connexion</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" async></script>
+  <script src="Acces_et_creation_de_compte.js" async></script>
 </head>
 
 <body>
@@ -102,11 +103,11 @@ if (isset($_POST['connexion'])) {
 
 
         <div class="inputs">
-          <input type="email" placeholder="Email" name="Email" />
-
+          <input type="text" id="email" placeholder="Email" name="Email" required/>
+          <span id="email-error" style="color:red"></span>
           <hr>
           <br>
-          <input type="password" placeholder="Mot de passe" name="Password">
+          <input type="password" placeholder="Mot de passe" name="Password"required>
 
         </div>
         <div align="center">
