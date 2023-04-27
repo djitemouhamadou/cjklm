@@ -172,6 +172,20 @@ button{z-index: 3;
     color: #eb7371;
     text-align:center;
   }
+  .panier{
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 40px 60px;
+    border-radius: 10px;
+    min-width: 500px;
+    color: #eb7371;
+    
+    
+    display: contents;
+    justify-content:center;
+    flex-direction: columns;
+    align-items: center;
+  }
   form .social-media{
     margin-top: -10px;
     display: flex;
@@ -212,7 +226,12 @@ button{z-index: 3;
     cursor:pointer;
   }
 
-
+table{
+  font-size: large;
+}
+td{
+  padding: 5px;
+}
 
 *.box-with-text {
   
@@ -314,7 +333,7 @@ section:nth-of-type(odd) {
   margin: auto;
   margin-top: 25px;
   position: relative;
-  width: 50vw;
+  width: 30vw;
   height: auto;
 
   overflow: hidden;
@@ -339,7 +358,7 @@ section:nth-of-type(odd) {
 }
 
 #slider ul li img{
-  width: 50vw;
+  width: 30vw;
   height: auto;
 }
 #slider #prev, #slider #next {
@@ -366,4 +385,21 @@ section:nth-of-type(odd) {
 #slider #prev:hover, #slider #next:hover {
   background-color: rgba(0, 0, 0, 0.5);
   text-shadow: 0;
+}
+.img_vetement{
+  width:200px;
+  height:auto;
+  margin:auto;
+  display: block;
+  padding: 10px;
+  
+}
+.vetement{
+  margin-top: 5%;
+  display: inline-block;
+  border: solid rgb(90, 89, 89) 3px;
+  border-radius:20px;
+  width: 18vw;
+  margin: 0 ;
+  min-width: 220px;
 }

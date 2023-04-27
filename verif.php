@@ -2,7 +2,7 @@
 session_start();
 $bdd = new PDO('mysql:host=localhost; dbname=utilisateurs;', 'root', '');
 //echo $_GET['cle'];
-if (isset($_GET['id']) and !empty($_GET['id']) and isset($_GET['id']) and !empty($_GET['id'])) {
+if (isset($_GET['id']) and !empty($_GET['id']) and isset($_GET['cle']) and !empty($_GET['cle'])) {
     $getid = $_GET['id'];
     $getcle = $_GET['cle'];
     $recupUser = $bdd->prepare('SELECT * FROM user WHERE id = ? AND cle = ?');

@@ -1,10 +1,13 @@
 <?php
 
 session_start();
+echo $_SESSION['id'];
+
 if(!$_SESSION['cle'] OR !$_SESSION['Password']){
-    echo $_SESSION['cle'];
+    //echo $_SESSION['cle'];
     header('Location: Acces_au_compte.php');
 }
+
 ?> 
 
 <!DOCTYPE html>
@@ -25,11 +28,11 @@ if(!$_SESSION['cle'] OR !$_SESSION['Password']){
 <body>
         <nav class="nav">
             <button onclick="fct()" class="bouton"><img src="pngegg.png" alt="menuBarre" class="menuBarre" id="menuBarre"></button>
-            <a href="" class="nomEntreprise">Top Vêtement</a></button>
+            <a href="index.php" class="nomEntreprise">Top Vêtement</a></button>
             <div class="compte">
                 <ul>
                     <li><a href="Acces_au_compte.php">Se connecter</a></li>
-                    <li><a href="">Mon panier</a></li>
+                    <li><a href="mon_panier.php">Mon panier</a></li>
                     <li><a href="">Langue</a></li>
                 </ul>
             </div>
@@ -61,11 +64,10 @@ if(!$_SESSION['cle'] OR !$_SESSION['Password']){
 <a href="http://www.google.com" style="display:block;">
         <div id="slider">
     <ul id="slideWrap"> 
-      <li><img src="photo.jpg" alt=""></li>
-      <li><img src="photo.jpg" alt=""></li>
-      <li><img src="photo.jpg" alt=""></li>
-      <li><img src="photo.jpg" alt=""></li>
-      <li><img src="photo.jpg" alt=""></li>
+      <li><img src="1682548495CH0207_132_20.jpg" alt=""></li>
+      <li><img src="1682549210Maje_MFPPU00613-2517_H_1.jpg" alt=""></li>
+      <li><img src="1682581757images (4).jpg" alt=""></li>
+      <li><img src="168255098330148079_1.jpg" alt=""></li>
     </ul>
     <a id="prev" href="#">&#8810;</a>
     <a id="next" href="#">&#8811;</a>

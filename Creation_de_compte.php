@@ -99,17 +99,16 @@ if (isset($_POST['creation'])) {
   <link rel="stylesheet" href="style.css">
   <script src="script.js" async></script>
   <script src="Acces_et_creation_de_compte.js" async></script>
-
 </head>
 
 <body>
   <nav class="nav">
     <button onclick="fct()"><img src="pngegg.png" alt="menuBarre" class="menuBarre" id="menuBarre"></button>
-    <a href="" class="nomEntreprise">Top Vêtement</a></button>
+    <a href="index.php" class="nomEntreprise">Top Vêtement</a></button>
     <div class="compte">
       <ul>
         <li><a href="Acces_au_compte.php">Se connecter</a></li>
-        <li><a href="">Mon panier</a></li>
+        <li><a href="mon_panier.php">Mon panier</a></li>
         <li><a href="">Langue</a></li>
       </ul>
     </div>
@@ -132,15 +131,16 @@ if (isset($_POST['creation'])) {
 
 
         <div class="inputs">
-          <input type="text" placeholder="Nom" name="Nom" required/>
-          <input type="text" placeholder="Prénom" name="Prenom" required />
+          <input type="text" placeholder="Nom" name="Nom" />
+          <input type="text" placeholder="Prénom" name="Prenom" />
+          
           <input type="text" id="email" placeholder="Email" name="Email" required/>
           <span id="email-error" style="color:red"></span>
           <br>
           <hr>
           <br>
-          <input type="password" placeholder="Mot de passe" name="Password" required>
-          <input type="password" placeholder="Confirmer le mot de passe" name="Cpassword" required>
+          <input type="password" placeholder="Mot de passe" name="Password">
+          <input type="password" placeholder="Confirmer le mot de passe" name="Cpassword">
         </div>
 
 

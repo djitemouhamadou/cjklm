@@ -16,7 +16,7 @@ header("location:Acces_au_compte.php");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Vêtements femmes</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="vetements_femmes.css">
+        <link rel="stylesheet" href="vetements_hommes.css">
         <script src="script.js" async></script>
 
 
@@ -26,12 +26,12 @@ header("location:Acces_au_compte.php");
         <nav class="nav">
                 <button onclick="fct()" class="bouton"><img src="pngegg.png" alt="menuBarre" class="menuBarre"
                                 id="menuBarre"></button>
-                <a href="" class="nomEntreprise">Top Vêtement</a></button>
+                <a href="index.php" class="nomEntreprise">Top Vêtement</a></button>
                 <div class="compte">
                         <ul>
                                 <li><a href="Acces_au_compte.php">Se connecter</a></li>
                                 <li><a href="abonnement.php">S'abonner</a></li>
-                                <li><a href="">Mon panier</a></li>
+                                <li><a href="mon_panier.php">Mon panier</a></li>
                                 <li><a href="">Langue</a></li>
                         </ul>
                 </div>
@@ -57,62 +57,33 @@ header("location:Acces_au_compte.php");
                 </div>
                 <div class="haut_vers_bas">
 
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2021/07/29/16275498223a2a3537fba14dda51889c5f8e896053_thumbnail_405x552.webp"
+                        
+
+                        <?php
+                        $con = mysqli_connect("localhost", "root", "", "utilisateurs");
+                        $req3 = mysqli_query($con, "SELECT * FROM beaute");
+                        
+                        if (mysqli_num_rows($req3) == 0) {
+                                //si la base de donnée ne contient aucun produit , alors affichons :
+                                echo " Aucun produit trouvé";
+                        } else { //si oui
+                        
+                                while ($row = mysqli_fetch_assoc($req3)) {
+                                        //affichons les informations
+                                        echo '
+                                        <a href="Vetement_clique.php?image='.$row['emplacement_image'].'&prix='.$row['prix'].'&nom='.$row['nom'].'&vendeur='.$row['vendeur'].'">
+                           <div class="vetement"><img
+                                        src="' . $row['emplacement_image'] . '"
                                         alt="" class="img_vetement">
-                                <span class="prix">100$</span>
+                                <p>' . $row['nom'] . ' <span>Prix:' . $row['prix'] . '&euro;</span></p>
 
                         </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2021/12/17/1639742972c8ef96c1602043d93662311d868dc24c_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/11/15/1668495389808b2307a0701511c4883df1ab3e9ba7_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
+                        </a>
+                           ';
+                                }
+                        }
 
-                        </div>
-
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2021/01/18/16109543340e1bfcbe56abb0d31c1cb810a6433900_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/03/15/164732613021b59964b3c14d79915a265179fc97fe_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/10/12/16655566625b7ca66a94d2bbc9cc18c554dbfffc18_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-
-
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/03/29/164854528154358fe405cf33a7f94b42b692179fab_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/10/08/16652127416f3731e34c5d4ba42a9a51cf7d2df0d9_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2021/06/07/162305306282ec210464eb577984ba2758add0c6e7_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <p>Surchemise <span>Prix:50&euro;</span></p>
-
-                        </div>
+                        ?>
 
                 </div>
 

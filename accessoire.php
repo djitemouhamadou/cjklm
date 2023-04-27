@@ -1,10 +1,7 @@
 <?php
-/*
 session_start();
-$_SESSION = array();
-session_destroy();
-header("location:Acces_au_compte.php");
-*/
+echo $_SESSION['id'];
+echo sha1("mdp");
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +23,11 @@ header("location:Acces_au_compte.php");
         <nav class="nav">
                 <button onclick="fct()" class="bouton"><img src="pngegg.png" alt="menuBarre" class="menuBarre"
                                 id="menuBarre"></button>
-                <a href="" class="nomEntreprise">Top Vêtement</a></button>
+                <a href="index.php" class="nomEntreprise">Top Vêtement</a></button>
                 <div class="compte">
                         <ul>
                                 <li><a href="Acces_au_compte.php">Se connecter</a></li>
-                                <li><a href="abonnement.php">S'abonner</a></li>
-                                <li><a href="">Mon panier</a></li>
+                                <li><a href="mon_panier.php">Mon panier</a></li>
                                 <li><a href="">Langue</a></li>
                         </ul>
                 </div>
@@ -57,80 +53,33 @@ header("location:Acces_au_compte.php");
                 </div>
                 <div class="haut_vers_bas">
 
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/10/28/16669211336f99e36ee0c6d162adba56441841164e_thumbnail_405x552.webp"
+                        
+
+                        <?php
+                        $con = mysqli_connect("localhost", "root", "", "utilisateurs");
+                        $req3 = mysqli_query($con, "SELECT * FROM accessoire");
+                        
+                        if (mysqli_num_rows($req3) == 0) {
+                                //si la base de donnée ne contient aucun produit , alors affichons :
+                                echo " Aucun produit trouvé";
+                        } else { //si oui
+                        
+                                while ($row = mysqli_fetch_assoc($req3)) {
+                                        //affichons les informations
+                                        echo '
+                                        <a href="Vetement_clique.php?image='.$row['emplacement_image'].'&prix='.$row['prix'].'&nom='.$row['nom'].'&vendeur='.$row['vendeur'].'">
+                           <div class="vetement"><img
+                                        src="' . $row['emplacement_image'] . '"
                                         alt="" class="img_vetement">
-                                <span class="prix">100$</span>
+                                <p>' . $row['nom'] . ' <span>Prix:' . $row['prix'] . '&euro;</span></p>
 
                         </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/02/08/16443135213a002fa2bffb701532b40d67b881930a_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/08/24/16613263816ec1a78bebcbe14b6241c41d04085d6a_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
+                        </a>
+                           ';
+                                }
+                        }
 
-                        </div>
-
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/11/01/1667289373d68c1955495f00d9b9a0f872c351b799_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/06/10/1654855307464bca8f89852cac090adc77a778986a_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2021/07/17/1626502142e917758370ddaaf5edd73a7a439ee47e_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-
-
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2023/01/06/167297147041cc951289397915b4c9aeaf7c0efd6b_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2021/06/30/1625035948d6a45e2157f4458c8ad8874d0cb2aff7_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <span class="prix">100$</span>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2023/02/08/167584188007d6abd4147ee2a4999103f1891d63ab_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <p>Surchemise <span>Prix:50&euro;</span></p>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/07/20/1658321778aa0ccf47d6c7770bf475d303ea7d2305_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <p>Surchemise <span>Prix:50&euro;</span></p>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/11/28/1669609517cf010383532f2a7c64737e5203b73b05_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <p>Surchemise <span>Prix:50&euro;</span></p>
-
-                        </div>
-                        <div class="vetement"><img
-                                        src="https://img.ltwebstatic.com/images3_pi/2022/07/29/165907803575af53749959109336a37c50df3da139_thumbnail_405x552.webp"
-                                        alt="" class="img_vetement">
-                                <p>Surchemise <span>Prix:50&euro;</span></p>
-
-                        </div>
+                        ?>
 
                 </div>
 

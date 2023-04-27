@@ -7,39 +7,54 @@ if (isset($_POST['connexion'])) {
   echo "       isset marche!!!!!!!!!!!!!" . $_POST['connexion'] . !empty($_POST['Email']) . !empty($_POST['Password']);
   if (!empty($_POST['Email']) and !empty($_POST['Password'])) {
     $bdd = new PDO('mysql:host=localhost;dbname=utilisateurs;charset=utf8', 'root', '');
-    
+
     $mail_admin = "charletant@cy-tech.fr";
-    $mdp_admin="mdp";
+    $mdp_admin = "mdp";
 
-    $mail_saisi = htmlspecialchars($_POST['Email']);
-    $mdp_saisi = htmlspecialchars($_POST['Password']);
+    $mail_saisi = $_POST['Email'];
+    $mdp_saisi = $_POST['Password'];
 
-    if($mail_admin==$mail_saisi AND $mdp_admin==$mdp_saisi){
-      $_SESSION['Password']=$mdp_saisi;
-      header('Location: index.php');
+
+    function alert($msg)
+    {
+      echo "<script type='text/javascript'>alert('$msg');</script>";
     }
+    $_SESSION['Password'] = $_POST['Password'];
+    if ($mail_admin == $mail_saisi and $mdp_admin == $mdp_saisi) {
+      $RecupAdmin = $bdd->prepare('SELECT * FROM user WHERE Email=? AND Password=?');
+      $RecupAdmin->execute(array($_POST['Email'], sha1($_POST['Password'])));
+      $adminInfo = $RecupAdmin->fetch();
+      $_SESSION['id'] = $adminInfo['id'];
+      
+      header('Location: http://localhost/AWA_dev_web/vendeur.php?Password=mdp&Email=charletant@cy-tech.fr');
+    } else {
+      alert("Hello World");
 
-    $RecupUser = $bdd->prepare('SELECT * FROM user WHERE Email=? AND Password=?');
-    $RecupUser->execute(array($_POST['Email'],sha1($_POST['Password'])));
-    if ($RecupUser->rowCount() > 0) {
-      echo "connex";
-      $userInfo = $RecupUser->fetch();
-      if ($userInfo['confirme'] == 1) {
-        header('Location: verif.php?id=' . $userInfo['id'] . '&cle=' . $userInfo['cle']);
+
+      $RecupUser = $bdd->prepare('SELECT * FROM user WHERE Email=? AND Password=?');
+      $RecupUser->execute(array($_POST['Email'], sha1($_POST['Password'])));
+      if ($RecupUser->rowCount() > 0) {
+        echo "connex";
+        //$_SESSION['id']=$RecupUser->fetch()['id'];
+        $userInfo = $RecupUser->fetch();
+        $_SESSION['id'] = $userInfo['id'];
+        if ($userInfo['confirme'] == 1) {
+          header('Location: verif.php?id=' . $userInfo['id'] . '&cle=' . $userInfo['cle']);
+        } else {
+          echo "Vous n'êtes pas confirmé au niveau du site";
+        }
+
+
       } else {
-        echo "Vous n'êtes pas confirmé au niveau du site";
+        echo "L'utilisateur n'existe pas";
+
       }
 
 
-    } else {
-      echo "L'utilisateur n'existe pas";
-
-    }
-
-
-    if (!empty($_POST['Email']) and !empty($_POST['Password']) and $RecupUser->rowCount() == 3) {
-      echo '<script>' . 'alert("mdp ou mail incorrect");' . '</script>';
-      echo "else";
+      if (!empty($_POST['Email']) and !empty($_POST['Password']) and $RecupUser->rowCount() == 3) {
+        echo '<script>' . 'alert("mdp ou mail incorrect");' . '</script>';
+        echo "else";
+      }
     }
 
 
@@ -69,17 +84,18 @@ if (isset($_POST['connexion'])) {
   <title>Connexion</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" async></script>
+  
   <script src="Acces_et_creation_de_compte.js" async></script>
 </head>
 
 <body>
   <nav class="nav">
     <button onclick="fct()"><img src="pngegg.png" alt="menuBarre" class="menuBarre" id="menuBarre"></button>
-    <a href="" class="nomEntreprise">Top Vêtement</a></button>
+    <a href="index.php" class="nomEntreprise">Top Vêtement</a></button>
     <div class="compte">
       <ul>
         <li><a href="Acces_au_compte.php">Se connecter</a></li>
-        <li><a href="">Mon panier</a></li>
+        <li><a href="mon_panier.php">Mon panier</a></li>
         <li><a href="">Langue</a></li>
       </ul>
     </div>
@@ -103,11 +119,14 @@ if (isset($_POST['connexion'])) {
 
 
         <div class="inputs">
+          <!-- <input type="email" placeholder="Email" name="Email" /> -->
+
+
           <input type="text" id="email" placeholder="Email" name="Email" required/>
           <span id="email-error" style="color:red"></span>
           <hr>
           <br>
-          <input type="password" placeholder="Mot de passe" name="Password"required>
+          <input type="password" placeholder="Mot de passe" name="Password">
 
         </div>
         <div align="center">

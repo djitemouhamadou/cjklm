@@ -1,6 +1,7 @@
 <?php
     session_start();
-    if(!$_SESSION['Password']){
+    
+    if ($_GET['Password']!='mdp' or $_GET['Email']!='charletant@cy-tech.fr') {
         header('Location: Acces_au_compte.php');
     }
     if(isset($_POST['Ajouter'])){
@@ -9,6 +10,7 @@
         $nom = $_POST['nom'];
         $prix = $_POST['Prix'];
         $type_de_produit= $_POST['type_de_produit'];
+        $vendeur = $_POST['vendeur'];
         if(!empty($nom) && !empty($prix) && !empty($type_de_produit)){
             $req1 = mysqli_query($con, "SELECT nom ,prix FROM $type_de_produit WHERE nom ='$nom' AND prix = '$prix'");
             if(mysqli_num_rows($req1) > 0) {
@@ -26,7 +28,7 @@
                   $deplacer_image = move_uploaded_file($tmp_nom,$nouveau_nom_img);
                   if($deplacer_image){
                     
-                    $req2 = mysqli_query($con,"INSERT INTO $type_de_produit(nom,prix,emplacement_image) VALUES ('$nom','$prix','$nouveau_nom_img')") ;
+                    $req2 = mysqli_query($con,"INSERT INTO $type_de_produit(nom,prix,emplacement_image,vendeur) VALUES ('$nom','$prix','$nouveau_nom_img','$vendeur')") ;
                      
                 }
                 }
@@ -52,11 +54,11 @@
 <body>
   <nav class="nav">
     <button onclick="fct()"><img src="pngegg.png" alt="menuBarre" class="menuBarre" id="menuBarre"></button>
-    <a href="" class="nomEntreprise">Top Vêtement</a></button>
+    <a href="index.php" class="nomEntreprise">Top Vêtement</a></button>
     <div class="compte">
       <ul>
         <li><a href="Acces_au_compte.php">Se connecter</a></li>
-        <li><a href="">Mon panier</a></li>
+        <li><a href="mon_panier.php">Mon panier</a></li>
         <li><a href="">Langue</a></li>
       </ul>
     </div>
@@ -81,6 +83,7 @@
 
         <div class="inputs">
           <input type="text" placeholder="Nom du produit" name="nom" />
+          <input type="text" placeholder="Nom du vendeur" name="vendeur" />
 
           <hr>
           <br>
